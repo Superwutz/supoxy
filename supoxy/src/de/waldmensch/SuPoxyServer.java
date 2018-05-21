@@ -22,6 +22,7 @@ public class SuPoxyServer {
 	 */
 	public static void main(String[] args) throws Exception {
 
+		SuPoxyUtils.log("Loading config..");
 		// we load the config file if given as parameter. If not we give a try to load it from working path
 		if(args.length > 0){
 			SuPoxySettings.LoadConfig(args[0]);
@@ -31,7 +32,7 @@ public class SuPoxyServer {
 
 		// only if the config is OK we can start
 		if(SuPoxySettings.configOK){
-
+			SuPoxyUtils.log("Config loaded");
 			SunnyList = new ArrayList<SuPoxyDataObject>();
 			new SuPoxyConnect("PortalConnector").start();
 			SuPoxyUtils.log("API Thread started");

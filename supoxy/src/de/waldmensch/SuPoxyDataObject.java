@@ -1,6 +1,9 @@
 package de.waldmensch;
 import java.util.Date;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,8 +20,15 @@ public class SuPoxyDataObject {
 		//SuPoxyUtils.log(JSONString);
 		json = (JSONObject) new JSONParser().parse(JSONString);
 
-		if(json.get("Timestamp") != null)
-			Timestamp = SuPoxyUtils.LongToDate(Long.parseLong(json.get("Timestamp").toString().substring(6, 19)));
+		if(json.get("Timestamp") != null) {
+			String temp = json.get("Timestamp").toString().substring(54, 73);
+			temp=temp.replace("-", "/");
+			temp=temp.replace("T", " ");
+			DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy/mm/dd HH:mm:ss");
+			DateTime dateTime=formatter.parseDateTime(temp);
+			Timestamp= dateTime.toDate();
+			
+		}
 		else
 			Timestamp = new Date();
 
