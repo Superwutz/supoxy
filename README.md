@@ -6,6 +6,11 @@ Proxy Server for Sunny Portal
 Reads the JSON Values from SMA Sunny Portal and presents them formatted or Raw. 
 It can be used in conjunction with FHEM to display your own statistic about your photovoltaic.
 
+This project was initially created in 2014 by Tommy-LSA and is now (2018) continued by Superwutz.
+
+I will try to develop this thing furthermore and keep it up to date!
+
+
 INSTALL
 =======
 1. Place the Files from "Distribution" Directory in an accessible path (eg /opt/fhem/suproxy)
